@@ -72,15 +72,17 @@ class _screen1State extends State<screen1> {
         title: Center(child: Text("TITLE")),
       ),
       body: Column(children: [
-        Expanded(
-          child: ListView.builder(
-            scrollDirection: Axis.vertical,
-            itemCount: ofUser!.length,
-            itemBuilder: (context, index) {
-              return buildCard(ofUser![index]);
-            },
-          ),
-        ),
+        ofUser == null
+            ? CircularProgressIndicator()
+            : Expanded(
+                child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  itemCount: ofUser!.length,
+                  itemBuilder: (context, index) {
+                    return buildCard(ofUser![index]);
+                  },
+                ),
+              ),
       ]),
     );
   }
